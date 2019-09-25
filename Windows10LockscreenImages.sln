@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsLockScreenDownloader.Console", "Windows10LockscreenImages\WindowsLockScreenDownloader.Console.csproj", "{FB6EBB8C-DAC4-4CFF-BD7B-3544E8B28208}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageFileChecker", "ImageFileChecker\ImageFileChecker\ImageFileChecker.csproj", "{B3A88F43-AEF0-4C72-BB24-72C978A3D6A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsLockScreenDownloader.Lib", "WindowsLockScreenDownloader.Lib\WindowsLockScreenDownloader.Lib\WindowsLockScreenDownloader.Lib.csproj", "{93398271-A491-4C36-BC2D-CE4429FA1FB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FB6EBB8C-DAC4-4CFF-BD7B-3544E8B28208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6EBB8C-DAC4-4CFF-BD7B-3544E8B28208}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6EBB8C-DAC4-4CFF-BD7B-3544E8B28208}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6EBB8C-DAC4-4CFF-BD7B-3544E8B28208}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3A88F43-AEF0-4C72-BB24-72C978A3D6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3A88F43-AEF0-4C72-BB24-72C978A3D6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3A88F43-AEF0-4C72-BB24-72C978A3D6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3A88F43-AEF0-4C72-BB24-72C978A3D6A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93398271-A491-4C36-BC2D-CE4429FA1FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93398271-A491-4C36-BC2D-CE4429FA1FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93398271-A491-4C36-BC2D-CE4429FA1FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93398271-A491-4C36-BC2D-CE4429FA1FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {283756F5-572E-4A90-8E14-B30715D32046}
+	EndGlobalSection
+EndGlobal
