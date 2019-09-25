@@ -8,6 +8,8 @@ namespace WindowsLockScreenDownloader.Lib
 {
     public class LockScreenDownloader
     {
+        public event EventHandler<string> MessageEmitted;
+
         /// <summary>
         /// Checks a Windows 10 OS for the lock screen images that Windows automatically downloads and copies them to a folder under the user's My Pictures 
         /// </summary>
@@ -17,8 +19,14 @@ namespace WindowsLockScreenDownloader.Lib
             string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             path += @"\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets";
 
+            OnMessageEmited("Checking that path to lock screens exists...");
+
             // No use in continuing if the source directory does not exist...
-            if (!Directory.Exists(path)) return;
+            if (!Directory.Exists(path))
+            {
+                OnMessageEmited("Checking that path to lock screens exists...");
+                return;
+            }
 
             // Get the path to the current user's My Pictures folder
             string savePath = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
@@ -46,6 +54,12 @@ namespace WindowsLockScreenDownloader.Lib
                 // copy to the save directory
                 File.Copy(imageFile.FullPath, fileName);
             }
+        }
+
+        protected virtual void OnMessageEmited(string message)
+        {
+            EventHandler<string> handler = MessageEmitted;
+            handler?.Invoke(this, message);
         }
     }
 }

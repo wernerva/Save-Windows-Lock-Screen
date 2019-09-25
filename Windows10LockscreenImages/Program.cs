@@ -10,6 +10,7 @@ namespace Windows10LockscreenImages
             Console.WriteLine("Copying Windows Lock Screens...");
 
             LockScreenDownloader lsd = new LockScreenDownloader();
+            lsd.MessageEmitted += Lsd_MessageEmitted;
             lsd.DownloadLockScreenImages();
 
             Console.WriteLine("Done");
@@ -20,6 +21,11 @@ namespace Windows10LockscreenImages
 
                 if (i > 0) System.Threading.Thread.Sleep(1000);
             }
-        }        
+        }
+
+        private static void Lsd_MessageEmitted(object sender, string e)
+        {
+            Console.WriteLine(e);
+        }
     }
 }
