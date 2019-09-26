@@ -63,7 +63,7 @@ namespace WindowsLockScreenDownloader.Lib
                 OnMessageEmited($"Copying {fileName}");
 
                 // copy to the save directory
-                File.Copy(imageFile.FullPath, fileName);
+                File.Copy(imageFile.FullPath, fullFileName);
             }
 
             OnMessageEmited("Done");
