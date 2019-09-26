@@ -19,12 +19,12 @@ namespace WindowsLockScreenDownloader.Lib
             string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             path += @"\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets";
 
-            OnMessageEmited("Checking that path to lock screens exists...");
+            OnMessageEmited($"Checking source path: {path}");
 
             // No use in continuing if the source directory does not exist...
             if (!Directory.Exists(path))
             {
-                OnMessageEmited("Checking that path to lock screens exists...");
+                OnMessageEmited("Path not found.");
                 return;
             }
 
@@ -34,26 +34,39 @@ namespace WindowsLockScreenDownloader.Lib
             // We'll be saving the images to their own folder within the user's My Pictures folder so append the path...
             savePath += @"\Windows Lock Screens";
 
+            OnMessageEmited($"Checking destination path: {savePath}");
+
             // Create the save directory if it doesn't exist
             Directory.CreateDirectory(savePath);
 
-            // Go fetch the files. We're only interrested in the Desktop wallpapers which have a width of 1090 (I've made an assumption here... watch it bite me...)
-            IEnumerable<ImageFile> imagefiles = new Checker().CheckPhysicalPath(path).Where(i => i.Width == 1920);
 
-            foreach (var imageFile in imagefiles)
+            OnMessageEmited("Checking for image files...");
+
+            // Go fetch the files. We're only interrested in the Desktop wallpapers which have a width of 1090 (I've made an assumption here... watch it bite me...)
+            IEnumerable<ImageFile> imageFiles = new Checker().CheckPhysicalPath(path).Where(i => i.Width == 1920);
+
+            OnMessageEmited($"Found {imageFiles.Count()}");
+            
+            foreach (var imageFile in imageFiles)
             {
                 // build up the new file name for copying
-                string fileName = $"{savePath}\\{imageFile.FileName}.{imageFile.ImageType.ToString().ToLower()}";
+                string fileName = $"{imageFile.FileName}.{imageFile.ImageType.ToString().ToLower()}";
+                string fullFileName = $"{savePath}\\{fileName}";
 
                 // if the file exists, skip copying
-                if (File.Exists(fileName))
+                if (File.Exists(fullFileName))
                 {
+                    OnMessageEmited($"{fileName} already exists. Skipping...");
                     continue;
                 }
+
+                OnMessageEmited($"Copying {fileName}");
 
                 // copy to the save directory
                 File.Copy(imageFile.FullPath, fileName);
             }
+
+            OnMessageEmited("Done");
         }
 
         protected virtual void OnMessageEmited(string message)

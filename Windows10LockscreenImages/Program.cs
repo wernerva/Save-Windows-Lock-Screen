@@ -13,7 +13,7 @@ namespace Windows10LockscreenImages
             lsd.MessageEmitted += Lsd_MessageEmitted;
             lsd.DownloadLockScreenImages();
 
-            Console.WriteLine("Done");
+            Console.WriteLine();
 
             for (int i = 5; i >= 0; i--)
             {
