@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "WindowsLockScreenDownloader.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "-w 5"
+    }
+  }
+}

@@ -7,6 +7,8 @@ namespace Windows10LockscreenImages
     {
         static void Main(string[] args)
         {
+            int wait = TryGetWaitFromArgs(args);
+
             Console.WriteLine("Copying Windows Lock Screens...");
 
             LockScreenDownloader lsd = new LockScreenDownloader();
@@ -15,7 +17,7 @@ namespace Windows10LockscreenImages
 
             Console.WriteLine();
 
-            for (int i = 5; i >= 0; i--)
+            for (int i = wait; i >= 0; i--)
             {
                 Console.Write($"\rClosing in {i}");
 
@@ -26,6 +28,25 @@ namespace Windows10LockscreenImages
         private static void Lsd_MessageEmitted(object sender, string e)
         {
             Console.WriteLine(e);
+        }
+
+        private static int TryGetWaitFromArgs(string[] args)
+        {
+            int result = 0;
+
+            if (args.Length == 0) return result;
+
+            int waitIdx = Array.IndexOf(args, "-w");
+
+            if (waitIdx > -1 && (args.Length - 1) >= (waitIdx + 1))
+            {
+                if (!int.TryParse(args[waitIdx + 1], out result) || result < 0) {
+                    Console.WriteLine("Invalid value for wait. Expected a positive integer.");
+                    result = 0;
+                }
+            }
+
+            return result;
         }
     }
 }
